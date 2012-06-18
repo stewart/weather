@@ -1,0 +1,35 @@
+<section class='four columns' id='glyph'>{{ icon.glyph }}</section>
+<section class='four columns' id='temperature'>
+  <div class='temp two columns alpha'>{{ results.item.condition.temp }}°{{ results.units.temperature }}</div>
+  <div class='icon two columns omega'>{{ icon.temp }}</div>
+</section>
+<section class='four columns' id='location'>
+  <div class='city'>{{ results.location.city }}</div>
+  <div class='region'>{{ results.location.region }}</div>
+  <div class='country'>{{ results.location.country }}</div>
+</section>
+<section class='four columns' id='condition'>
+  <div class='text'>{{ results.item.condition.text }}</div>
+</section>
+<section class='eight columns' id='sun'>
+  <div class='sunrise four columns alpha'>
+    <div class='icon'>n</div>
+    <div class='text'>{{ results.astronomy.sunrise }}</div>
+  </div>
+  <div class='sunset four columns omega'>
+    <div class='icon'>b</div>
+    <div class='text'>{{ results.astronomy.sunset }}</div>
+  </div>
+</section>
+<section class='four columns' id='high'>
+  <h1 class='title'>High</h1>
+  <div class='temp'>{{ results.item.forecast.0.high }}°{{ results.units.temperature }}</div>
+</section>
+<section class='four columns' id='low'>
+  <h1 class='title'>Low</h1>
+  <div class='temp'>{{ results.item.forecast.0.low }}°{{ results.units.temperature }}</div>
+</section>
+<section class='four columns' id='wind'>
+  <div class='icon'>k</div>
+  <div class='text'> {{ results.wind.speed }} <div class='units'>{{ results.units.speed }}</div></div>
+</section>
