@@ -101,6 +101,18 @@ get_weather = ->
       weather.wind.speed = Math.floor weather.wind.speed
 
       $(".container").html Handlebars.templates.content {results: weather, icon: {glyph: glyph, temp: 'Q'}}
+
+      city = $("#location .city")
+      country = $("#location .country")
+
+      if city.text().length > 9 or country.text().length > 9
+        console.log country.text().length
+        $("#location").css "font-size" : "30px"
+
+      if city.text().length > 15 or country.text().length > 15
+        console.log country.text().length
+        $("#location").css "font-size" : "25px"
+
       $("#spinner").fadeOut 300, -> $(this).remove()
 
 # Changes weather glyph based on current conditions
