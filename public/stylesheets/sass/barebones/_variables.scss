@@ -1,0 +1,129 @@
+// variables
+//
+// easily customize the look and feel of barebones
+
+/* =============================================================================
+   Colors
+   ========================================================================== */
+
+// grays
+$black:        hsl(0, 0, 0);
+$gray-dark:    hsl(0, 0, 20);
+$gray:         hsl(0, 0, 33);
+$gray-light:   hsl(0, 0, 60);
+$gray-lighter: hsl(0, 0, 93);
+$white:        hsl(0, 0, 100);
+
+// accent colors
+$blue:      hsl(198, 75, 38);
+$blue-dark: hsl(211, 75, 35);
+$green:     hsl(120, 43, 41);
+$red:       hsl(0, 70, 36);
+$yellow:    hsl(48, 96, 100);
+$orange:    hsl(35, 95, 44);
+$pink:      hsl(341, 64, 46);
+$purple:    hsl(269, 52, 43);
+
+// code background colors
+$code-background: lighten($gray-lighter, 5);
+$pre-background:  hsl(192, 100, 11);
+
+// placeholder text
+$placeholder-text-color:  $gray-light;
+
+// defaults
+$body-background:    $white;
+$default-text-color: $white;
+
+// links
+$link-color:       hsl(200, 100, 40);
+$link-color-hover: darken($link-color, 15);
+
+/* =============================================================================
+   Typography
+   ========================================================================== */
+
+// font families
+$sans:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+$serif: Georgia, Cambria, "Times New Roman", Times, serif;
+$mono:  Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace;
+
+// baselines
+$base-font-size:        16px;
+$base-line-height:      21px;
+$base-font-family:      $sans;
+$alternate-font-family: $serif;
+
+// headings
+$heading-font-family: $sans;
+$heading-font-weight: bold;
+$heading-color:       $white;
+
+$h1-size: 2.286em;
+$h2-size: 1.714em;
+$h3-size: 1.5em;
+$h4-size: 1.286em;
+$h5-size: 1.143em;
+$h6-size: 1em;
+
+$h1-line-height: $base-line-height * 2;
+$h2-line-height: $base-line-height * 1.7;
+$h3-line-height: $base-line-height * 1.5;
+$h4-line-height: $base-line-height * 1.3;
+$h5-line-height: $base-line-height * 1.1;
+$h6-line-height: $base-line-height;
+
+$h1-margin: 16.2px;
+$h2-margin: 12.6px;
+$h3-margin: 9px;
+$h4-margin: 5.4px;
+$h5-margin: 5.4px;
+$h6-margin: 5.4px;
+
+// class to apply syntax highlighting to
+$code-highlight-class: ".highlight";
+
+/* =============================================================================
+   Components
+   ========================================================================== */
+
+// tables
+$table-background:        transparent;
+$table-background-accent: hsl(0, 0, 98);
+$table-border:            hsl(0, 0, 87);
+
+// buttons
+$button-background:           $white;
+$button-background-highlight: darken($white, 10);
+$button-border:               hsl(0, 0, 80);
+
+$button-primary-background:           hsl(200, 100, 40);
+$button-primary-background-highlight: hsl(220, 100, 40);
+
+// forms
+$input-background:          $white;
+$input-border:              hsl(0, 0, 80);
+$input-border-radius:       3px;
+$inpub-disabled-background: $gray-lighter;
+$form-actions-background:   hsl(0, 0, 96);
+$input-placeholder-color:   $gray-lighter;
+
+// form states and alerts
+$warning-text:       hsl(38, 46, 54);
+$warning-background: hsl(50, 81, 94);
+$warning-border:     darken($warning-background, 5);
+
+$error-text:         hsl(1, 45, 50);
+$error-background:   hsl(0, 43, 91);
+$error-border:       darken($error-background, 5);
+
+$success-text:       hsl(121, 32, 40);
+$success-background: hsl(103, 44, 89);
+$success-border:     darken($success-background, 5);
+
+$info-text:          hsl(200, 50, 45);
+$info-background:    hsl(200, 65, 91);
+$info-border:        darken($info-background, 5);
+
+// misc
+$hr-border-color: $gray-lighter;

@@ -1,0 +1,31 @@
+// labels
+//
+// Inline labels.
+// Inspired by Twitter's Bootstrap
+// http://twitter.github.com/bootstrap
+
+span.label {
+  padding: 2px 4px 3px;
+  font-size: $base-font-size * .85;
+  font-weight: bold;
+  color: $white;
+  text-shadow: 0 -1px 0 hsla(0, 0, 0, 0.25);
+  background-color: $gray-light;
+  @include border-radius(3px);
+
+  // hover state
+  &:hover { color: $white; text-decoration: none; }
+
+  // colors
+  &.important { background-color: $error-text; }
+  &.important:hover { background-color: darken($error-text, 10%); }
+
+  &.warning { background-color: $orange; }
+  &.warning:hover { background-color: darken($orange, 10%); }
+
+  &.success { background-color: $success-text; }
+  &.success:hover { background-color: darken($success-text, 10%); }
+
+  &.info { background-color: $info-text; }
+  &.info:hover { background-color: darken($info-text, 10%); }
+}

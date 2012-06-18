@@ -1,0 +1,94 @@
+// mixins
+//
+// useful mixins and helpers
+
+/* =============================================================================
+   Utilities
+   ========================================================================== */
+
+// clearfix
+@mixin clearfix() {
+  &:before {
+    content: '';
+    display: table;
+  }
+  &:before {
+    clear: both;
+  }
+  *zoom: 1;
+}
+
+.clearfix { @include clearfix(); }
+
+// center-block
+@mixin center-block() {
+  display: block;
+  margin: 0 auto;
+}
+
+.center-block { @include center-block(); }
+
+// sizing shortcuts
+@mixin size($height: 5px, $width: 5px) {
+  width: $height;
+  height: $height;
+}
+
+@mixin square($size: 5px) {
+  @include size($size, $size);
+}
+
+// placeholder text color
+@mixin placeholder($color: $placeholder_text) {
+  :-moz-placeholder { color: $color; }
+  ::-webkit-input-placeholder { color: $color; }
+}
+
+// invisible
+.invisible { visibility: hidden; }
+
+// hidden
+.hidden { display: none !important; visibility: hidden; }
+
+// remove top/bottom from block-level elements
+.remove-bottom {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.remove-top {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+/* =============================================================================
+   CSS3
+   ========================================================================== */
+
+// background-clip
+@mixin background-clip($clip) {
+  -webkit-background-clip: $clip;
+     -moz-background-clip: $clip;
+          background-clip: $clip;
+}
+
+// user-select
+@mixin user-select($select) {
+  -webkit-user-select: $select;
+     -moz-user-select: $select;
+       -o-user-select: $select;
+          user-select: $select;
+}
+
+// resizable
+@mixin resizable($direction: both) {
+  resize: $direction;
+  overflow: auto;
+}
+
+// opacity
+@mixin opacity($opacity: 100) {
+  filter: alpha(opacity=#{$opacity});
+  -moz-opacity: $opacity / 100;
+       opacity: $opacity / 100;
+}
