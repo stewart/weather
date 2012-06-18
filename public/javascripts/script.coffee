@@ -72,6 +72,7 @@ geolocation_fallback = ->
 # fetches and displays weather for current location
 get_weather = ->
   location_api_url = "http://where.yahooapis.com/geocode?location=#{latitude},#{longitude}&flags=J&gflags=R&appid=#{APP_ID}"
+  UNITS = "f" if geoplugin_countryCode() is "US"
   yql              = "select * from weather.forecast where woeid=WID and u='#{UNITS}'"
   weather_api_url  = "http://query.yahooapis.com/v1/public/yql?q=#{encodeURIComponent yql}&format=json&callback=?"
 
