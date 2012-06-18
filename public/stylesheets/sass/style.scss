@@ -1,9 +1,189 @@
 @import "barebones/barebones";
 
+@font-face {
+  font-family: 'Climacons';
+  src: url("/fonts/climacons-webfont.eot");
+  src: url("/fonts/climacons-webfont.eot?#iefix") format("embedded-opentype"),
+       url("/fonts/climacons-webfont.woff") format("woff"),
+       url("/fonts/climacons-webfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+body {
+  background: url("/images/background.jpg") no-repeat center center fixed;
+  @include background-size(cover);
+  padding-top: 30px;
+}
+
+#error {
+  background: $red;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 20px;
+  position: fixed;
+  top: 0;
+  display: none;
+}
+
 #spinner {
   position: absolute;
   left: 50%;
   top: 50%;
   margin-left: -25px;
   margin-top: -25px;
+}
+
+#title {
+  font-weight: normal;
+  font-family: "Crete Round", $sans;
+  color: #efefef;
+  position: fixed;
+  bottom: -10px;
+  right: 10px;
+  @include user-select(none);
+  cursor: default;
+  text-shadow: 0 2.5px 5px #444444;
+}
+
+section {
+  height: 170px;
+  background: hsla(0, 0, 0, 0.4);
+}
+
+#glyph, #temperature, #sun, #high, #low, #condition, #location, #wind {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#glyph {
+  font-family: Climacons;
+  font-size: 170px;
+  line-height: 1;
+  text-align: center;
+  padding-top: 20px;
+  padding-left: 30px;
+}
+
+#temperature {
+  .icon {
+    padding: 15px;
+    text-align: right;
+    font-family: Climacons;
+    font-size: 150px;
+    line-height: 1.1;
+  }
+
+  .temp {
+    padding: 10px;
+    font-size: 50px;
+    line-height: 1;
+    font-weight: 300;
+  }
+}
+
+#location {
+  padding: 10px;
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 50px;
+}
+
+#condition {
+  padding: 10px;
+  .text {
+    font-size: 30px;
+    line-height: 150px;
+    text-align: center;
+  }
+}
+
+#sun {
+  padding-top: 40px;
+  text-align: center;
+  .icon {
+    font-family: Climacons;
+    font-size: 150px;
+    line-height: 0.5;
+    padding-left: 15px;
+  }
+  .text {
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 300;
+  }
+}
+
+#wind {
+  padding: 10px;
+  .text {
+    font-size: 75px;
+    line-height: 1;
+  }
+  .units {
+    text-transform: uppercase;
+  }
+  .icon {
+    float: right;
+    text-align: right;
+    font-family: Climacons;
+    font-size: 125px;
+    line-height: 0.6;
+  }
+}
+
+#high, #low {
+  padding: 10px;
+  h1 {
+    margin-top: 0;
+  }
+  .temp {
+    font-size: 60px;
+    line-height: 1;
+    font-weight: 300;
+    margin-top: 50px;
+    text-align: right;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  #glyph {
+    padding-left: 15px;
+  }
+  #condition .text {
+    line-height: 75px;
+  }
+  #location {
+    font-size: 30px;
+  }
+  #wind .text {
+    font-size: 58px;
+    line-height: 1.4;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  #title {
+    display: none !important;
+    visibility: hidden;
+  }
+  #temperature {
+    .icon {
+      position: relative;
+      top: -70px;
+    }
+  }
+  #sun {
+    height: 320px; }
+    .sunrise {
+      margin-bottom: 40px;
+    }
+  body {
+    padding-top: 0;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
 }

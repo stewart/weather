@@ -126,4 +126,4 @@ $ ->
   do get_location
 
 show_error = (error = "An unknown error occured. Please try again.") ->
-  $("#error").html(error).delay(200).show().delay(5000).hide()
+  $("#error").html(error).delay(200).fadeIn().delay(5000).fadeOut()
