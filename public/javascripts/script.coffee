@@ -94,13 +94,14 @@ get_weather = ->
         show_error "We can't find weather information for your current location."
         return false
 
-      weather = response.query.results.channel
-      glyph   = get_glyph weather
+      weather   = response.query.results.channel
+      glyph     = get_glyph weather
+      temp_icon = get_temp_icon weather
 
       # round wind speed
       weather.wind.speed = Math.floor weather.wind.speed
 
-      $(".container").html Handlebars.templates.content {results: weather, icon: {glyph: glyph, temp: 'Q'}}
+      $(".container").html Handlebars.templates.content {results: weather, icon: {glyph: glyph, temp: temp_icon}}
 
       city = $("#location .city")
       country = $("#location .country")
@@ -133,6 +134,16 @@ get_glyph = (weather) ->
     when '32', '36' then 'v'
     when '37', '38', '39', '45', '47' then 'z'
     else 'g'
+
+window.get_temp_icon = (weather) ->
+  temp = weather.item.condition.temp
+
+  if temp > 30
+    'E'
+  else if temp < 0
+    ')'
+  else
+    "_+QW".charAt (temp > 10) + (temp > 15) + (temp > 20)
 
 $ ->
   do create_spinner
