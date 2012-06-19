@@ -135,7 +135,7 @@ get_glyph = (weather) ->
     when '37', '38', '39', '45', '47' then 'z'
     else 'g'
 
-window.get_temp_icon = (weather) ->
+get_temp_icon = (weather) ->
   temp = weather.item.condition.temp
 
   if temp > 30
