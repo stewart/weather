@@ -1,7 +1,5 @@
-require 'rubygems'
 require 'bundler'
-Bundler.require :default
-require 'sass/plugin/rack'
+Bundler.require(:default)
 require './weather'
 
 # sass/bourbon for stylesheets

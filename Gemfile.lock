@@ -1,8 +1,6 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
-    bourbon (2.1.0)
-      sass (>= 3.1)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -34,7 +32,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bourbon
   haml
   rack-coffee
   sass

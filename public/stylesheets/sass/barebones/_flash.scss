@@ -1,0 +1,42 @@
+.flash {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  color: #444;
+  border: 1px solid #444;
+  margin: 10px 0;
+  padding: 0 10px;
+  border-radius: 3px;
+
+  .close {
+    float: right;
+  }
+
+  &.info {
+    $color: hsl(200, 65, 91);
+    background: $color;
+    border-color: darken($color, 5);
+    color: darken($color, 50);
+  }
+
+  &.notice {
+    $color: hsl(50, 81, 85);
+    background: $color;
+    border-color: darken($color, 5);
+    color: darken($color, 50);
+  }
+
+  &.error {
+    $color: hsl(0, 43, 91);
+    background: $color;
+    border-color: darken($color, 5);
+    color: darken($color, 50);
+  }
+
+  &.success {
+    $color: hsl(103, 44, 85);
+    background: $color;
+    border-color: darken($color, 5);
+    color: darken($color, 50);
+  }
+}

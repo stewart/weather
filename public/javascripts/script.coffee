@@ -74,7 +74,7 @@ get_weather = ->
   location_api_url = "http://where.yahooapis.com/geocode?location=#{latitude},#{longitude}&flags=J&gflags=R&appid=#{APP_ID}"
   UNITS = "f" if geoplugin_countryCode() is "US"
   yql              = "select * from weather.forecast where woeid=WID and u='#{UNITS}'"
-  weather_api_url  = "http://query.yahooapis.com/v1/public/yql?q=#{encodeURIComponent yql}&format=json&callback=?"
+  weather_api_url  = "http://query.yahooapis.com/v1/public/yql?q=#{encodeURIComponent yql}&format=json"
 
   city    = null
   code    = null
@@ -82,39 +82,47 @@ get_weather = ->
   result  = null
   woeid   = null
 
-  $.getJSON location_api_url, (response) ->
-    unless response.ResultSet.Found is 1
-      show_error "Could not find your location."
-      return false
 
-    woeid = response.ResultSet.Results[0].woeid
+  console.log "hello world"
 
-    $.getJSON weather_api_url.replace("WID", woeid), (response) ->
-      unless response.query.results.channel.item.condition
-        show_error "We can't find weather information for your current location."
+  $.ajax
+    url: location_api_url
+    success: (data) ->
+      unless data.ResultSet.Found is '1'
+        show_error "Could not find your location."
         return false
 
-      weather   = response.query.results.channel
-      glyph     = get_glyph weather
-      temp_icon = get_temp_icon weather
+      woeid = data.ResultSet.Results[0].woeid
 
-      # round wind speed
-      weather.wind.speed = Math.floor weather.wind.speed
+      $.ajax
+        url: weather_api_url.replace("WID", woeid)
+        success: (data) ->
+          console.log data
+          unless data.query.results.channel.item.condition
+            show_error "We can't find weather information for your current location."
+            return false
 
-      $(".container").html Handlebars.templates.content {results: weather, icon: {glyph: glyph, temp: temp_icon}}
+          weather   = data.query.results.channel
+          glyph     = get_glyph weather
+          temp_icon = get_temp_icon weather
 
-      city = $("#location .city")
-      country = $("#location .country")
+          # round wind speed
+          weather.wind.speed = Math.floor weather.wind.speed
 
-      if city.text().length > 9 or country.text().length > 9
-        console.log country.text().length
-        $("#location").css "font-size" : "30px"
+          $(".container").html Handlebars.templates.content {results: weather, icon: {glyph: glyph, temp: temp_icon}}
 
-      if city.text().length > 15 or country.text().length > 15
-        console.log country.text().length
-        $("#location").css "font-size" : "25px"
+          city = $("#location .city")
+          country = $("#location .country")
 
-      $("#spinner").fadeOut 300, -> $(this).remove()
+          if city.text().length > 9 or country.text().length > 9
+            console.log country.text().length
+            $("#location").css "font-size" : "30px"
+
+          if city.text().length > 15 or country.text().length > 15
+            console.log country.text().length
+            $("#location").css "font-size" : "25px"
+
+          $("#spinner").fadeOut 300, -> $(this).remove()
 
 # Changes weather glyph based on current conditions
 get_glyph = (weather) ->

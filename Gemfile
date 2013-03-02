@@ -1,8 +1,7 @@
-source :rubygems
+source 'https://rubygems.org'
 
 gem 'sinatra'
-gem 'sass'
+gem 'sass', require: 'sass/plugin/rack'
 gem 'haml'
-gem 'bourbon'
 gem 'rack-coffee'
 gem 'unicorn'

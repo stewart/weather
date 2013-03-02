@@ -1,16 +1,10 @@
-// scaffold
-//
-// 16-grid implementation of the 960 grid system
-// Inspired by Dave Gamache's Skeleton framework
-// http://getskeleton.com
-
 /* =============================================================================
    Base Grid
    ========================================================================== */
 
 .container { position: relative; width: 960px; margin: 0 auto; }
 .column, .columns { float: left; display: inline; margin: 0 10px; }
-.row { margin-bottom: $base-line-height; @include clearfix()}
+.row { margin-bottom: $base-line-height; }
 
 .column.alpha, .columns.alpha { margin-left: 0; }
 .column.omega, .columns.omega { margin-right: 0; }
@@ -138,4 +132,13 @@
     .thirteen.columns, .fourteen.columns, .fifteen.columns,
     .sixteen.columns, .one-third.column, .two-thirds.column { width: 420px; }
   }
+}
+
+/* =============================================================================
+   Box Model
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 }
