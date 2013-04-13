@@ -71,7 +71,7 @@ geolocation_fallback = ->
 
 # fetches and displays weather for current location
 get_weather = ->
-  location_api_url = "http://where.yahooapis.com/geocode?location=#{latitude},#{longitude}&flags=J&gflags=R&appid=#{APP_ID}"
+  location_api_url = "http://where.yahooapis.com/v1/places.q('#{latitude},#{longitude}')?appid=#{APP_ID}"
   UNITS = "f" if geoplugin_countryCode() is "US"
   yql              = "select * from weather.forecast where woeid=WID and u='#{UNITS}'"
   weather_api_url  = "http://query.yahooapis.com/v1/public/yql?q=#{encodeURIComponent yql}&format=json"
@@ -82,17 +82,15 @@ get_weather = ->
   result  = null
   woeid   = null
 
-
-  console.log "hello world"
-
   $.ajax
     url: location_api_url
+    dataType: "xml"
     success: (data) ->
-      unless data.ResultSet.Found is '1'
+      woeid = $("locality1", data).attr('woeid')
+
+      if typeof woeid is 'undefined'
         show_error "Could not find your location."
         return false
-
-      woeid = data.ResultSet.Results[0].woeid
 
       $.ajax
         url: weather_api_url.replace("WID", woeid)
@@ -159,3 +157,4 @@ $ ->
 
 show_error = (error = "An unknown error occured. Please try again.") ->
   $("#error").html(error).delay(200).fadeIn().delay(5000).fadeOut()
+  $("#spinner").fadeOut 300, -> $(this).remove()
